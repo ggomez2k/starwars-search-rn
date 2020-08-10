@@ -1,31 +1,39 @@
-import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
-import {generateStackScreen} from './helpers/navigation';
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { generateStackScreen } from './helpers/navigation'
 
-import Search from './screens/search';
+import PhoneSignIn from './screens/auth'
+import VideoList from './screens/videos'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 const routes = [
   {
-    component: Search,
-    name: 'Search',
+    component: PhoneSignIn,
+    name: 'Login',
     options: {
-      title: 'SWStarter',
-    },
+      headerShown: false
+    }
   },
-];
+  {
+    component: VideoList,
+    name: 'VideoList',
+    options: {
+      title: 'Video List'
+    }
+  }
+]
 
-function AppNavigator() {
+const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={'Search'}>
+      <Stack.Navigator initialRouteName='Login'>
         {routes.map((screen, index) =>
-          generateStackScreen({index, ...screen, Stack}),
+          generateStackScreen({ index, ...screen, Stack })
         )}
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
-export default AppNavigator;
+export default AppNavigator

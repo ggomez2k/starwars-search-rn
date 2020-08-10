@@ -1,3 +1,3 @@
-import Search from './Search.dataLayer';
+import Search from './Search.dataLayer'
 
-export default Search;
+export default Search

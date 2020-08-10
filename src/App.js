@@ -1,27 +1,31 @@
-import React, {Component} from 'react';
-import AppNavigator from './AppNavigator';
-import {Provider as ReduxProvider} from 'react-redux';
-import {setCustomText} from 'react-native-global-props';
-import {store} from './reducers';
+import React, { Component } from 'react'
+import AppNavigator from './AppNavigator'
+import { Provider as ReduxProvider } from 'react-redux'
+import { setCustomText } from 'react-native-global-props'
+import { ThemeContext, getTheme } from 'react-native-material-ui'
+import { store } from './reducers'
+import uiTheme from './themes/Default'
 
 const customTextProps = {
   style: {
     fontSize: 14,
     fontFamily: 'Montserrat-Regular',
-    color: '#383838',
-  },
-};
+    color: '#383838'
+  }
+}
 
 export default class App extends Component {
-  componentDidMount() {
-    setCustomText(customTextProps);
+  componentDidMount () {
+    setCustomText(customTextProps)
   }
 
-  render() {
+  render () {
     return (
       <ReduxProvider store={store}>
-        <AppNavigator />
+        <ThemeContext.Provider value={getTheme(uiTheme)}>
+          <AppNavigator />
+        </ThemeContext.Provider>
       </ReduxProvider>
-    );
+    )
   }
 }
