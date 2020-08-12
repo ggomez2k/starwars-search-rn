@@ -2,11 +2,11 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { generateStackScreen } from './helpers/navigation'
-
+import BottomTab from './components/BottomTab'
 import PhoneSignIn from './screens/auth'
-import VideoList from './screens/videos'
 
 const Stack = createStackNavigator()
+
 const routes = [
   {
     component: PhoneSignIn,
@@ -16,10 +16,10 @@ const routes = [
     }
   },
   {
-    component: VideoList,
-    name: 'VideoList',
+    component: BottomTab,
+    name: 'BottomTab',
     options: {
-      title: 'Video List'
+      headerShown: false
     }
   }
 ]

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import AppNavigator from './AppNavigator'
 import { Provider as ReduxProvider } from 'react-redux'
-import { setCustomText } from 'react-native-global-props'
 import { ThemeContext, getTheme } from 'react-native-material-ui'
+import { setCustomText } from 'react-native-global-props'
 import { store } from './reducers'
 import uiTheme from './themes/Default'
 

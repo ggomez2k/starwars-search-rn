@@ -33,7 +33,7 @@ function PhoneSignIn () {
         CommonActions.reset({
           index: 1,
           routes: [
-            { name: 'VideoList' }
+            { name: 'BottomTab' }
           ]
         })
       )
