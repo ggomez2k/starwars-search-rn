@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Dimensions } from 'react-native'
 import { withTheme } from 'react-native-material-ui'
 
-// const { theme } = this.props
-const Card = (props) => {
+const { width } = Dimensions.get('window')
+const ChannelCard = (props) => {
   return (
     <View style={styles.card}>
       {props.children}
@@ -13,11 +13,11 @@ const Card = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
-    flexDirection: 'row',
+    flex: 2,
     borderRadius: 5,
-    marginHorizontal: 60,
-    marginVertical: 5,
+    width: width / 2.5,
+    marginHorizontal: 20,
+    marginTop: 10,
     padding: 10,
     backgroundColor: 'grey',
     elevation: 10
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default withTheme(Card)
+export default withTheme(ChannelCard)

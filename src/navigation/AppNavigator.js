@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { generateStackScreen } from './helpers/navigation'
-import BottomTab from './components/BottomTab'
-import PhoneSignIn from './screens/auth'
+import { generateStackScreen } from '../helpers/navigation'
+import BottomTab from './BottomTab'
+import PhoneSignIn from '../screens/auth'
 
 const Stack = createStackNavigator()
 

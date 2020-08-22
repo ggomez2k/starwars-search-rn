@@ -6,7 +6,9 @@ import ChannelList from '../screens/channels'
 import Profile from '../screens/settings/Profile'
 
 const Tab = createMaterialBottomTabNavigator()
-const myIcon = (<Icon name='user' size={25} color='white' />)
+const videosIcon = (<Icon name='film' size={23} color='white' />)
+const channelsIcon = (<Icon name='th' size={23} color='white' />)
+const settingsIcon = (<Icon name='gear' size={23} color='white' />)
 const BottomTab = () => {
   return (
     <Tab.Navigator
@@ -18,7 +20,7 @@ const BottomTab = () => {
         options={{
           tabBarLabel: 'Videos',
           tabBarIcon: () => (
-            myIcon
+            videosIcon
           )
         }}
       />
@@ -28,7 +30,7 @@ const BottomTab = () => {
         options={{
           tabBarLabel: 'Channels',
           tabBarIcon: () => (
-            myIcon
+            channelsIcon
           )
         }}
       />
@@ -38,7 +40,7 @@ const BottomTab = () => {
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: () => (
-            myIcon
+            settingsIcon
           )
         }}
       />

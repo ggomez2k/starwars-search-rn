@@ -1,37 +1,36 @@
 import React from 'react'
 import {
+  // StyleSheet,
   Text,
   Image,
   FlatList,
   View
 } from 'react-native'
-import Card from '../../components/Card'
+import ChannelCard from '../../components/ChannelCard'
 import DATA from './MOCK_DATA.json'
 
 const Channel = ({ channel }) => {
   const picture = {
-    uri: String(channel.thumb)
+    uri: String(channel.picture)
   }
   return (
-    <Card>
-      <Image
-        style={{ width: 80, height: 80, position: 'relative', alignSelf: 'center' }}
-        source={picture}
-      />
-      <View style={{ flex: 1, flexDirection: 'column' }}>
-        <Text style={{ margin: 10, fontStyle: 'italic' }}>
+    <View style={{ flex: 1 }}>
+      <ChannelCard>
+        <Image
+          style={{ width: 80, height: 60, alignSelf: 'center' }}
+          source={picture}
+        />
+      </ChannelCard>
+      <View style={{ flex: 1, alignSelf: 'flex-start', marginHorizontal: 10 }}>
+        <Text style={{ margin: 10 }}>
           {channel.title}
         </Text>
-        <Text style={{ fontSize: 10, padding: 10 }}>
-          {channel.short_desc}
-        </Text>
       </View>
-    </Card>
+    </View>
   )
 }
 
 const displayChannelList = ({ item: channel }) => {
-  // console.log(video)
   return (
     <Channel
       channel={channel}
@@ -46,6 +45,7 @@ const ChannelList = () => {
         data={DATA}
         renderItem={displayChannelList}
         keyExtractor={key => String(key.id)}
+        numColumns={2}
       />
     </>
   )

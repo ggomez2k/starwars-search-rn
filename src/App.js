@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppNavigator from './AppNavigator'
+import AppNavigator from './navigation/AppNavigator'
 import { Provider as ReduxProvider } from 'react-redux'
 import { ThemeContext, getTheme } from 'react-native-material-ui'
 import { setCustomText } from 'react-native-global-props'

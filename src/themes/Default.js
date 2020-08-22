@@ -8,7 +8,8 @@ const uiTheme = {
     error: COLOR.red400,
     neutral: COLOR.white,
     black: COLOR.black
-  }
+  },
+  spacing: '1em'
 }
 
 export default uiTheme
