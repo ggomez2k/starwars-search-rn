@@ -1,16 +1,23 @@
 import React from 'react'
 import { View, Text, Image, Dimensions, StyleSheet } from 'react-native'
-import { Collapse, CollapseHeader/*, CollapseBody */ } from 'accordion-collapse-react-native'
+import { useNavigation } from '@react-navigation/native'
+import { Button } from 'react-native-paper'
 import { withTheme } from 'react-native-material-ui'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 const { width, height } = Dimensions.get('window')
 const Profile = () => {
+  const navigation = useNavigation()
   return (
-    <View style={styles.content}>
+    <>
       <View style={styles.button}>
-        <Icon name='edit' size={18} color='white' />
-        <Text>EDITAR</Text>
+        <Button
+          icon='edit'
+          mode='contained'
+          color='#694fad'
+          onPress={() => { console.warn('pressed button') }}
+        >
+          EDITAR
+        </Button>
       </View>
       <View style={styles.profileSection}>
         <Image
@@ -23,48 +30,63 @@ const Profile = () => {
       </View>
       <View style={{ backgroundColor: 'red', height: 2, width: '100%', alignSelf: 'center', marginHorizontal: 10 }} />
       <View style={styles.settingsContent}>
-        <Collapse>
-          <CollapseHeader style={{ marginTop: 10 }}>
-            <Text style={{ marginHorizontal: 10 }}>Favoritos</Text>
-            <View style={{ backgroundColor: 'grey', height: 2, width: '100%', alignSelf: 'center', marginTop: 10 }} />
-          </CollapseHeader>
-        </Collapse>
-        <Collapse>
-          <CollapseHeader style={{ marginTop: 10 }}>
-            <Text style={{ marginHorizontal: 10 }}>Ver más tarde</Text>
-            <View style={{ backgroundColor: 'grey', height: 2, width: '100%', alignSelf: 'center', marginTop: 10 }} />
-          </CollapseHeader>
-        </Collapse>
-        <Collapse>
-          <CollapseHeader style={{ marginTop: 10 }}>
-            <Text style={{ marginHorizontal: 10 }}>Historial</Text>
-            <View style={{ backgroundColor: 'grey', height: 2, width: '100%', alignSelf: 'center', marginTop: 10 }} />
-          </CollapseHeader>
-        </Collapse>
-        <Collapse>
-          <CollapseHeader style={{ marginTop: 10 }}>
-            <Text style={{ marginHorizontal: 10 }}>Suscripciones</Text>
-            <View style={{ backgroundColor: 'grey', height: 2, width: '100%', alignSelf: 'center', marginTop: 10 }} />
-          </CollapseHeader>
-        </Collapse>
+        <Button
+          mode='outlined'
+          style={{ alignItems: 'flex-start' }}
+          onPress={() => {
+            navigation.navigate('Favoritos')
+          }}
+        >
+          Favoritos
+        </Button>
+        <Button
+          mode='outlined'
+          style={{ alignItems: 'flex-start' }}
+          onPress={() => {
+            navigation.navigate('Ver más tarde')
+          }}
+        >
+          Ver más tarde
+        </Button>
+        <Button
+          mode='outlined'
+          style={{ alignItems: 'flex-start' }}
+          onPress={() => {
+            navigation.navigate('Historial')
+          }}
+        >
+          Historial
+        </Button>
+        <Button
+          mode='outlined'
+          style={{ alignItems: 'flex-start' }}
+          onPress={() => {
+            navigation.navigate('Suscripciones')
+          }}
+        >
+          Suscripciones
+        </Button>
       </View>
-      <View style={styles.fullButton}>
-        <Icon name='edit' size={18} color='green' style={{ marginHorizontal: 10 }} />
-        <Text>CERRAR SESIÓN</Text>
+      <View>
+        <Button
+          icon='sign-out'
+          mode='outlined'
+          color='#694fad'
+          onPress={() => {}}
+        >
+          CERRAR SESIÓN
+        </Button>
       </View>
-    </View>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
-  content: {
-    flex: 1
-  },
   profileSection: {
     flex: 1,
     margin: 0,
     padding: 0,
-    height: height / 3,
+    height: height / 2,
     flexDirection: 'row'
   },
   userInfo: {
@@ -77,29 +99,12 @@ const styles = StyleSheet.create({
     alignContent: 'center'
   },
   settingsContent: {
-    height: height / 1.6
+    height: height / 1.8
   },
   button: {
     flexDirection: 'row',
-    width: '30%',
-    height: '5%',
-    margin: 5,
-    padding: 5,
-    backgroundColor: 'grey',
-    alignItems: 'center',
-    alignContent: 'center',
-    alignSelf: 'flex-end',
-    borderRadius: 3,
-    shadowColor: 'grey'
-  },
-  fullButton: {
-    flexDirection: 'row',
-    width: '100%',
-    height: '6%',
-    backgroundColor: 'orange',
-    alignItems: 'center',
-    alignContent: 'center',
-    alignSelf: 'center'
+    padding: 2,
+    alignSelf: 'flex-end'
   }
 })
 

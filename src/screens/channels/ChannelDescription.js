@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   View,
   Text,
@@ -7,10 +7,11 @@ import {
   TouchableHighlight,
   StyleSheet
 } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute, StackActions } from '@react-navigation/native'
+import { withTheme } from 'react-native-material-ui'
 import Card from '../../components/Card'
 import bgimage from '../../../assets/images/film.png'
-import DATA from './MOCK_DATA.json'
+import DATA from './channel_video.json'
 
 const Video = ({ video }) => {
   const navigation = useNavigation()
@@ -20,6 +21,8 @@ const Video = ({ video }) => {
   return (
     <TouchableHighlight
       onPress={() => {
+        const pushAction = StackActions.push('VideoPlayer', { video })
+        navigation.dispatch(pushAction)
         navigation.navigate('VideoPlayer', { video })
       }}
     >
@@ -50,7 +53,16 @@ const displayVideoList = ({ item: video }) => {
   )
 }
 
-const VideoList = () => {
+const ChannelDescription = () => {
+  const navigation = useNavigation()
+  const route = useRoute()
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: `Canal: ${route.params.title}`
+    })
+  })
+
   return (
     <>
       <Image
@@ -77,4 +89,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default VideoList
+export default withTheme(ChannelDescription)

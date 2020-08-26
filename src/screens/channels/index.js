@@ -4,8 +4,10 @@ import {
   Text,
   Image,
   FlatList,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import ChannelCard from '../../components/ChannelCard'
 import DATA from './MOCK_DATA.json'
 
@@ -13,14 +15,21 @@ const Channel = ({ channel }) => {
   const picture = {
     uri: String(channel.picture)
   }
+  const navigation = useNavigation()
   return (
     <View style={{ flex: 1 }}>
-      <ChannelCard>
-        <Image
-          style={{ width: 80, height: 60, alignSelf: 'center' }}
-          source={picture}
-        />
-      </ChannelCard>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('ChannelDescription', { title: channel.title })
+        }}
+      >
+        <ChannelCard>
+          <Image
+            style={{ width: 80, height: 60, alignSelf: 'center' }}
+            source={picture}
+          />
+        </ChannelCard>
+      </TouchableOpacity>
       <View style={{ flex: 1, alignSelf: 'flex-start', marginHorizontal: 10 }}>
         <Text style={{ margin: 10 }}>
           {channel.title}
