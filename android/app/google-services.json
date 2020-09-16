@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "380078077552",
+    "firebase_url": "https://woosyworld-94b8a.firebaseio.com",
+    "project_id": "woosyworld-94b8a",
+    "storage_bucket": "woosyworld-94b8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380078077552:android:71ba0d2f1d935b34b526b5",
+        "android_client_info": {
+          "package_name": "com.woosyworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380078077552-ht7rsqmv5nt2nn97guj83hk9vo8bagme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNfcr5HOY6n3yT3UxYc5t-j04QSCiwrSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380078077552-ht7rsqmv5nt2nn97guj83hk9vo8bagme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

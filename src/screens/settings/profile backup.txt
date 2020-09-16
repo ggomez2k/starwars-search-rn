@@ -1,0 +1,197 @@
+profile backup
+
+import React, { useState } from 'react'
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity
+} from 'react-native'
+import { withTheme } from 'react-native-material-ui'
+import * as Animatable from 'react-native-animatable'
+// import for the animation of Collapse and Expand
+import Accordion from 'react-native-collapsible'
+// import for the Accordion viewimport { withTheme } from 'react-native-material-ui'
+
+const DATA = [
+  { title: 'Favoritos', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna ante, semper vel rhoncus at, rhoncus eu risus. In a purus sit amet ante accumsan sollicitudin vel congue erat. Mauris viverra, est sit amet accumsan pretium, lacus sapien tincidunt diam, vitae vulputate orci lacus sit amet leo. Etiam est nibh, laoreet non maximus vitae, porta non neque. In hac habitasse platea dictumst. Nullam posuere condimentum tincidunt. In et mollis nulla. Nullam eu tempor arcu, id ullamcorper tortor. Nulla bibendum, ipsum vitae sollicitudin ultrices, odio urna interdum ante, quis sagittis dolor eros suscipit massa. Vivamus iaculis volutpat magna, in euismod elit commodo non. Mauris et elementum nisi. Pellentesque tincidunt eu tellus non dignissim. Aenean quis imperdiet massa. Maecenas viverra purus non auctor maximus. Sed bibendum felis in sem pharetra, nec vestibulum metus porta. Aliquam ut lectus sem. Duis aliquet, nunc eget euismod rutrum, augue mi congue libero, eget blandit odio ante sit amet nisi. Aliquam quis erat eget lorem accumsan consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur malesuada dapibus erat vel rutrum. Phasellus viverra nulla vitae vulputate venenatis. Fusce sem nibh, pulvinar eleifend ultricies in, semper vel turpis. Vestibulum porttitor viverra erat ac cursus. Ut et congue augue. Integer non nisi leo. Integer quis convallis urna, nec cursus nulla. Nulla facilisi. Nullam in nulla at tellus convallis fringilla a sed nunc. Maecenas nec elit nec neque bibendum ullamcorper. Cras tempus lacinia velit, et tempor massa fermentum id. Vivamus nisl turpis, imperdiet et ullamcorper laoreet, interdum quis arcu. Etiam dapibus dignissim elit, eu ornare lacus laoreet ut. Praesent vestibulum quam vitae libero viverra malesuada. Maecenas eget magna ut nisl suscipit suscipit nec pellentesque dui. Nunc ullamcorper nec quam vel posuere. Morbi eros libero, condimentum at nisi eget, aliquet mollis dui. Fusce porta sem at arcu lacinia molestie. Sed efficitur, erat vel tempus pretium, ante mi dapibus dui, eget elementum enim augue quis ex. Nam consectetur mi ante, at sagittis eros pretium in. Quisque elementum, lectus a accumsan suscipit, dolor justo pharetra felis, at pretium massa magna quis orci. Sed euismod ipsum eget sodales pulvinar. Nullam vestibulum sollicitudin accumsan. Vivamus elit dui, feugiat vel magna ut, ullamcorper accumsan tellus. Pellentesque vel est erat. Nullam quis orci velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a quam eu enim accumsan ullamcorper. Etiam ut mauris non dui fermentum rutrum eu non lacus. Quisque in libero eget dolor sollicitudin vulputate. Fusce aliquam ante quis pharetra cursus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.' },
+  { title: 'Ver más tarde', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna ante, semper vel rhoncus at, rhoncus eu risus. In a purus sit amet ante accumsan sollicitudin vel congue erat. Mauris viverra, est sit amet accumsan pretium, lacus sapien tincidunt diam, vitae vulputate orci lacus sit amet leo. Etiam est nibh, laoreet non maximus vitae, porta non neque. In hac habitasse platea dictumst. Nullam posuere condimentum tincidunt. In et mollis nulla. Nullam eu tempor arcu, id ullamcorper tortor. Nulla bibendum, ipsum vitae sollicitudin ultrices, odio urna interdum ante, quis sagittis dolor eros suscipit massa. Vivamus iaculis volutpat magna, in euismod elit commodo non. Mauris et elementum nisi. Pellentesque tincidunt eu tellus non dignissim. Aenean quis imperdiet massa. Maecenas viverra purus non auctor maximus. Sed bibendum felis in sem pharetra, nec vestibulum metus porta. Aliquam ut lectus sem. Duis aliquet, nunc eget euismod rutrum, augue mi congue libero, eget blandit odio ante sit amet nisi. Aliquam quis erat eget lorem accumsan consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur malesuada dapibus erat vel rutrum. Phasellus viverra nulla vitae vulputate venenatis. Fusce sem nibh, pulvinar eleifend ultricies in, semper vel turpis. Vestibulum porttitor viverra erat ac cursus. Ut et congue augue. Integer non nisi leo. Integer quis convallis urna, nec cursus nulla. Nulla facilisi. Nullam in nulla at tellus convallis fringilla a sed nunc. Maecenas nec elit nec neque bibendum ullamcorper. Cras tempus lacinia velit, et tempor massa fermentum id. Vivamus nisl turpis, imperdiet et ullamcorper laoreet, interdum quis arcu. Etiam dapibus dignissim elit, eu ornare lacus laoreet ut. Praesent vestibulum quam vitae libero viverra malesuada. Maecenas eget magna ut nisl suscipit suscipit nec pellentesque dui. Nunc ullamcorper nec quam vel posuere. Morbi eros libero, condimentum at nisi eget, aliquet mollis dui. Fusce porta sem at arcu lacinia molestie. Sed efficitur, erat vel tempus pretium, ante mi dapibus dui, eget elementum enim augue quis ex. Nam consectetur mi ante, at sagittis eros pretium in. Quisque elementum, lectus a accumsan suscipit, dolor justo pharetra felis, at pretium massa magna quis orci. Sed euismod ipsum eget sodales pulvinar. Nullam vestibulum sollicitudin accumsan. Vivamus elit dui, feugiat vel magna ut, ullamcorper accumsan tellus. Pellentesque vel est erat. Nullam quis orci velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a quam eu enim accumsan ullamcorper. Etiam ut mauris non dui fermentum rutrum eu non lacus. Quisque in libero eget dolor sollicitudin vulputate. Fusce aliquam ante quis pharetra cursus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.' },
+  { title: 'Historial', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna ante, semper vel rhoncus at, rhoncus eu risus. In a purus sit amet ante accumsan sollicitudin vel congue erat. Mauris viverra, est sit amet accumsan pretium, lacus sapien tincidunt diam, vitae vulputate orci lacus sit amet leo. Etiam est nibh, laoreet non maximus vitae, porta non neque. In hac habitasse platea dictumst. Nullam posuere condimentum tincidunt. In et mollis nulla. Nullam eu tempor arcu, id ullamcorper tortor. Nulla bibendum, ipsum vitae sollicitudin ultrices, odio urna interdum ante, quis sagittis dolor eros suscipit massa. Vivamus iaculis volutpat magna, in euismod elit commodo non. Mauris et elementum nisi. Pellentesque tincidunt eu tellus non dignissim. Aenean quis imperdiet massa. Maecenas viverra purus non auctor maximus. Sed bibendum felis in sem pharetra, nec vestibulum metus porta. Aliquam ut lectus sem. Duis aliquet, nunc eget euismod rutrum, augue mi congue libero, eget blandit odio ante sit amet nisi. Aliquam quis erat eget lorem accumsan consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur malesuada dapibus erat vel rutrum. Phasellus viverra nulla vitae vulputate venenatis. Fusce sem nibh, pulvinar eleifend ultricies in, semper vel turpis. Vestibulum porttitor viverra erat ac cursus. Ut et congue augue. Integer non nisi leo. Integer quis convallis urna, nec cursus nulla. Nulla facilisi. Nullam in nulla at tellus convallis fringilla a sed nunc. Maecenas nec elit nec neque bibendum ullamcorper. Cras tempus lacinia velit, et tempor massa fermentum id. Vivamus nisl turpis, imperdiet et ullamcorper laoreet, interdum quis arcu. Etiam dapibus dignissim elit, eu ornare lacus laoreet ut. Praesent vestibulum quam vitae libero viverra malesuada. Maecenas eget magna ut nisl suscipit suscipit nec pellentesque dui. Nunc ullamcorper nec quam vel posuere. Morbi eros libero, condimentum at nisi eget, aliquet mollis dui. Fusce porta sem at arcu lacinia molestie. Sed efficitur, erat vel tempus pretium, ante mi dapibus dui, eget elementum enim augue quis ex. Nam consectetur mi ante, at sagittis eros pretium in. Quisque elementum, lectus a accumsan suscipit, dolor justo pharetra felis, at pretium massa magna quis orci. Sed euismod ipsum eget sodales pulvinar. Nullam vestibulum sollicitudin accumsan. Vivamus elit dui, feugiat vel magna ut, ullamcorper accumsan tellus. Pellentesque vel est erat. Nullam quis orci velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a quam eu enim accumsan ullamcorper. Etiam ut mauris non dui fermentum rutrum eu non lacus. Quisque in libero eget dolor sollicitudin vulputate. Fusce aliquam ante quis pharetra cursus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.' },
+  { title: 'Suscripciones', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna ante, semper vel rhoncus at, rhoncus eu risus. In a purus sit amet ante accumsan sollicitudin vel congue erat. Mauris viverra, est sit amet accumsan pretium, lacus sapien tincidunt diam, vitae vulputate orci lacus sit amet leo. Etiam est nibh, laoreet non maximus vitae, porta non neque. In hac habitasse platea dictumst. Nullam posuere condimentum tincidunt. In et mollis nulla. Nullam eu tempor arcu, id ullamcorper tortor. Nulla bibendum, ipsum vitae sollicitudin ultrices, odio urna interdum ante, quis sagittis dolor eros suscipit massa. Vivamus iaculis volutpat magna, in euismod elit commodo non. Mauris et elementum nisi. Pellentesque tincidunt eu tellus non dignissim. Aenean quis imperdiet massa. Maecenas viverra purus non auctor maximus. Sed bibendum felis in sem pharetra, nec vestibulum metus porta. Aliquam ut lectus sem. Duis aliquet, nunc eget euismod rutrum, augue mi congue libero, eget blandit odio ante sit amet nisi. Aliquam quis erat eget lorem accumsan consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur malesuada dapibus erat vel rutrum. Phasellus viverra nulla vitae vulputate venenatis. Fusce sem nibh, pulvinar eleifend ultricies in, semper vel turpis. Vestibulum porttitor viverra erat ac cursus. Ut et congue augue. Integer non nisi leo. Integer quis convallis urna, nec cursus nulla. Nulla facilisi. Nullam in nulla at tellus convallis fringilla a sed nunc. Maecenas nec elit nec neque bibendum ullamcorper. Cras tempus lacinia velit, et tempor massa fermentum id. Vivamus nisl turpis, imperdiet et ullamcorper laoreet, interdum quis arcu. Etiam dapibus dignissim elit, eu ornare lacus laoreet ut. Praesent vestibulum quam vitae libero viverra malesuada. Maecenas eget magna ut nisl suscipit suscipit nec pellentesque dui. Nunc ullamcorper nec quam vel posuere. Morbi eros libero, condimentum at nisi eget, aliquet mollis dui. Fusce porta sem at arcu lacinia molestie. Sed efficitur, erat vel tempus pretium, ante mi dapibus dui, eget elementum enim augue quis ex. Nam consectetur mi ante, at sagittis eros pretium in. Quisque elementum, lectus a accumsan suscipit, dolor justo pharetra felis, at pretium massa magna quis orci. Sed euismod ipsum eget sodales pulvinar. Nullam vestibulum sollicitudin accumsan. Vivamus elit dui, feugiat vel magna ut, ullamcorper accumsan tellus. Pellentesque vel est erat. Nullam quis orci velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a quam eu enim accumsan ullamcorper. Etiam ut mauris non dui fermentum rutrum eu non lacus. Quisque in libero eget dolor sollicitudin vulputate. Fusce aliquam ante quis pharetra cursus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.' }
+]
+
+const { height } = Dimensions.get('window')
+// To make the selector (Something like tabs)
+const [state, setState] = useState({
+  state: {
+    // default active selector
+    activeSections: [],
+    // collapsed condition for the single collapsible
+    collapsed: true,
+    // multipleSelect is for the Multiple Expand allowed
+    // true: You can expand multiple at a time
+    // false: One can be expand at a time and other will be closed automatically
+    multipleSelect: false
+  }
+})
+const toggleExpanded = () => setState({ collapsed: !this.state.collapsed })
+const setSections = sections => setState({
+  activeSections: sections.includes(undefined) ? [] : sections
+})
+const renderHeader = (section, _, isActive) => {
+  // Accordion Header view
+  return (
+    <Animatable.View
+      duration={400}
+      style={[styles.header, isActive ? styles.active : styles.inactive]}
+      transition='backgroundColor'>
+      <Text style={styles.headerText}>{section.title}</Text>
+    </Animatable.View>
+  )
+}
+
+const renderContent = (section, _, isActive) => {
+  // Accordion Content view
+  return (
+    <Animatable.View
+      duration={400}
+      style={[styles.content, isActive ? styles.active : styles.inactive]}
+      transition='backgroundColor'>
+      <Animatable.Text
+        animation={isActive ? 'bounceIn' : undefined}
+        style={{ textAlign: 'center' }}>
+        {section.content}
+      </Animatable.Text>
+    </Animatable.View>
+  )
+}
+
+const Profile = () => {
+  const { multipleSelect, activeSections } = state
+  return (
+    <>
+      <View style={styles.profileSection}>
+        <Image
+          style={{ width: 100, height: 100, borderRadius: 50 }}
+          source={{ uri: 'https://www.vhv.rs/dpng/d/561-5617462_hurt-user-profile-image-dummy-hd-png-download.png' }}
+        />
+        <View style={styles.userInfo}>
+          <Text>Woosy World user</Text>
+        </View>
+      </View>
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={{ paddingTop: 30 }}>
+          {/* Code for Single Collapsible Start */}
+          <TouchableOpacity onPress={toggleExpanded}>
+            <View style={styles.header}>
+              <Text style={styles.headerText}>Single Collapsible</Text>
+              {/* Heading of Single Collapsible */}
+            </View>
+          </TouchableOpacity>
+          <View style={{ backgroundColor: '#000', height: 1, marginTop: 10 }} />
+          {/* Code for Accordion/Expandable List starts here */}
+          <Accordion
+            activeSections={activeSections}
+            // for any default active section
+            sections={DATA}
+            // title and content of accordion
+            touchableComponent={TouchableOpacity}
+            // which type of touchable component you want
+            // It can be the following Touchables
+            // TouchableHighlight, TouchableNativeFeedback
+            // TouchableOpacity , TouchableWithoutFeedback
+            expandMultiple={multipleSelect}
+            // Do you want to expand mutiple at a time or single at a time
+            renderHeader={renderHeader}
+            // Header Component(View) to render
+            renderContent={renderContent}
+            // Content Component(View) to render
+            duration={400}
+            // Duration for Collapse and expand
+            onChange={setSections}
+            // setting the state of active sections
+          />
+          {/* Code for Accordion/Expandable List ends here */}
+        </ScrollView>
+      </View>
+    </>
+  )
+}
+
+const styles = StyleSheet.create({
+  profileSection: {
+    flex: 1,
+    flexDirection: 'row',
+    height: height / 4,
+    margin: 20
+  },
+  userInfo: {
+    flex: 2,
+    margin: 20,
+    alignItems: 'center',
+    alignContent: 'center'
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+    paddingTop: 30
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: '300',
+    marginBottom: 20
+  },
+  header: {
+    backgroundColor: '#F5FCFF',
+    padding: 10
+  },
+  headerText: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '500'
+  },
+  content: {
+    padding: 20,
+    backgroundColor: '#fff'
+  },
+  active: {
+    backgroundColor: 'rgba(255,255,255,1)'
+  },
+  inactive: {
+    backgroundColor: 'rgba(245,252,255,1)'
+  },
+  selectors: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  selector: {
+    backgroundColor: '#F5FCFF',
+    padding: 10
+  },
+  activeSelector: {
+    fontWeight: 'bold'
+  },
+  selectTitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    padding: 10,
+    textAlign: 'center'
+  },
+  multipleToggle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 30,
+    alignItems: 'center'
+  },
+  multipleToggle__title: {
+    fontSize: 16,
+    marginRight: 8
+  }
+})
+
+export default withTheme(Profile)

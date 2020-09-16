@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 /**
  * Generate callback to go navigate back.
@@ -7,8 +7,8 @@ import React from 'react';
  *
  * @returns {Function} callback - Callback to navigate back.
  */
-export function generateBack({navigation}) {
-  return () => navigation.goBack();
+export const generateBack = ({ navigation }) => {
+  return () => navigation.goBack()
 }
 
 /**
@@ -19,18 +19,18 @@ export function generateBack({navigation}) {
  *
  * @returns {Function} callback - Callback to navigate to a route.
  */
-export function generateGoToRoute({navigation, params, routeName, stack}) {
-  const goTo = stack ? navigation.push : navigation.navigate;
-  return () => goTo(routeName, params || {});
+export const generateGoToRoute = ({ navigation, params, routeName, stack }) => {
+  const goTo = stack ? navigation.push : navigation.navigate
+  return () => goTo(routeName, params || {})
 }
 
-export function generateStackScreen({
+export function generateStackScreen ({
   component,
   index,
   name,
   options,
   params,
-  Stack,
+  Stack
 }) {
   return (
     <Stack.Screen
@@ -40,5 +40,5 @@ export function generateStackScreen({
       initialParams={params}
       options={options}
     />
-  );
+  )
 }
