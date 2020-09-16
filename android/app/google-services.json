@@ -1,50 +1,34 @@
 {
   "project_info": {
-    "project_number": "113306294305",
-    "firebase_url": "https://woosyworld.firebaseio.com",
-    "project_id": "woosyworld",
-    "storage_bucket": "woosyworld.appspot.com"
+    "project_number": "380078077552",
+    "firebase_url": "https://woosyworld-94b8a.firebaseio.com",
+    "project_id": "woosyworld-94b8a",
+    "storage_bucket": "woosyworld-94b8a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:113306294305:android:b6c7799b0005fe82afab60",
+        "mobilesdk_app_id": "1:380078077552:android:71ba0d2f1d935b34b526b5",
         "android_client_info": {
           "package_name": "com.woosyworld"
         }
       },
       "oauth_client": [
         {
-          "client_id": "113306294305-54pmcgpspbhuqttijja222pps0lq7oi8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.woosyworld",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "113306294305-o90o1orjdc8qk9mfigbkij2gsomtktev.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.woosyworld",
-            "certificate_hash": "2df35aea98558b7c1d6cb48be2a34ef740902ee4"
-          }
-        },
-        {
-          "client_id": "113306294305-0kmgaje64pepuuj8rf7qfuf5j1tahean.apps.googleusercontent.com",
+          "client_id": "380078077552-ht7rsqmv5nt2nn97guj83hk9vo8bagme.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBixxEUTCkOkTJyDnVVGF68edoFXfQk8G4"
+          "current_key": "AIzaSyDNfcr5HOY6n3yT3UxYc5t-j04QSCiwrSI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "113306294305-0kmgaje64pepuuj8rf7qfuf5j1tahean.apps.googleusercontent.com",
+              "client_id": "380078077552-ht7rsqmv5nt2nn97guj83hk9vo8bagme.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
